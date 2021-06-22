@@ -14,7 +14,7 @@ beforeEach(() => {
 describe('User registration functionality', () => {
   it('return 200 when signup request is valid', function (done) {
     request(app)
-      .post('/api/v1.0/users')
+      .post('/api/1.0/users')
       .send({
         username: 'user',
         email: 'user@email.com',
@@ -25,7 +25,7 @@ describe('User registration functionality', () => {
 
   it('return success message when signup request is valid', function (done) {
     request(app)
-      .post('/api/v1.0/users')
+      .post('/api/1.0/users')
       .send({
         username: 'user',
         email: 'user@email.com',
@@ -39,7 +39,7 @@ describe('User registration functionality', () => {
 
   it('saves user to database', function (done) {
     request(app)
-      .post('/api/v1.0/users')
+      .post('/api/1.0/users')
       .send({
         username: 'user',
         email: 'user@email.com',
@@ -54,7 +54,7 @@ describe('User registration functionality', () => {
   });
   it('saves username and email to database', function (done) {
     request(app)
-      .post('/api/v1.0/users')
+      .post('/api/1.0/users')
       .send({
         username: 'user',
         email: 'user@email.com',
@@ -65,6 +65,22 @@ describe('User registration functionality', () => {
           const first = users[0];
           expect(first.username).toBe('user');
           expect(first.email).toBe('user@email.com');
+          done();
+        });
+      });
+  });
+  it('hashes password in database', function (done) {
+    request(app)
+      .post('/api/1.0/users')
+      .send({
+        username: 'user',
+        email: 'user@email.com',
+        password: 'password',
+      })
+      .then(() => {
+        User.findAll().then((users) => {
+          const first = users[0];
+          expect(first.password).not.toBe('password');
           done();
         });
       });
