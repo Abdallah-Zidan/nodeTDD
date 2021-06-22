@@ -1,0 +1,29 @@
+{
+  "name": "horsax",
+  "version": "1.0.0",
+  "description": "TDD with express",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest --watchAll",
+    "dev": "nodemon .",
+    "start": "node ."
+  },
+  "keywords": [
+    "TDD",
+    "express",
+    "horsax",
+    "test driven development"
+  ],
+  "author": "Abdallah Zidan",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.23",
+    "jest": "^27.0.5",
+    "nodemon": "^2.0.7"
+  }
+}
