@@ -4,9 +4,9 @@
   "description": "TDD with express",
   "main": "server.js",
   "scripts": {
-    "test": "jest --watch",
-    "dev": "nodemon .",
-    "start": "node .",
+    "test": "cross-env NODE_ENV=test jest --watch",
+    "dev": "cross-env NODE_ENV=development nodemon .",
+    "start": "cross-env NODE_ENV=development node .",
     "lint": "eslint . ",
     "lintfix": "eslint . --fix"
   },
@@ -19,6 +19,8 @@
   "author": "Abdallah Zidan",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.0.1",
+    "config": "^3.3.6",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "morgan": "^1.10.0",
@@ -27,6 +29,7 @@
   },
   "devDependencies": {
     "@types/jest": "^26.0.23",
+    "cross-env": "^7.0.3",
     "eslint": "^7.29.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
@@ -37,7 +40,7 @@
   },
   "eslintConfig": {
     "parserOptions": {
-      "ecmaVersion": 8
+      "ecmaVersion": 2018
     },
     "extends": [
       "eslint:recommended",

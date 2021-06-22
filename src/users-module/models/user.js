@@ -1,6 +1,5 @@
 const { Model, STRING } = require('sequelize');
-const sequelize = require('../config/database');
-
+const sequelize = require('../../config/database');
 class User extends Model {}
 User.init(
   {
@@ -15,7 +14,7 @@ User.init(
     },
   },
   {
-    sequelize,
+    sequelize: sequelize,
     modelName: 'user',
   }
 );
