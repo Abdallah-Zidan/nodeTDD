@@ -1,5 +1,5 @@
 const { Model, STRING } = require('sequelize');
-const sequelize = require('../../config/database');
+const sequelize = require('../config/database');
 class User extends Model {}
 User.init(
   {

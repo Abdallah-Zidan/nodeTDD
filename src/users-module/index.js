@@ -1,4 +1,4 @@
 module.exports = {
   routes: require('./routes'),
-  User: require('./models/user'),
+  User: require('./user.model'),
 };
