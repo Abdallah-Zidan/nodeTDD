@@ -56,7 +56,7 @@
       "jest": true
     },
     "rules": {
-      "prettier/prettier": "warn",
+      "prettier/prettier": "off",
       "eqeqeq": "warn"
     }
   },
