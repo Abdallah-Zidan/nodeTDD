@@ -1,18 +1,16 @@
-module.exports.registration = (req, res, next) => {
-  if (req.body.username === null) {
-    return res.status(400).send({ validationErrors: { username: "username can't be null" } });
+const { check, validationResult } = require('express-validator');
+module.exports.registration = [
+  check('username').notEmpty().withMessage("username can't be null"),
+  check('email').notEmpty().withMessage("email can't be null"),
+];
+
+module.exports.registrationErrors = (req) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    const validationErrors = {};
+    errors.array().forEach((err) => {
+      validationErrors[err.param] = err.msg;
+    });
+    return validationErrors;
   }
-  next();
-};
-module.exports.validateUsername = (req, res, next) => {
-  if (req.body.username === null) {
-    return res.status(400).send({ validationErrors: { username: "username can't be null" } });
-  }
-  next();
-};
-module.exports.validateEmail = (req, res, next) => {
-  if (req.body.email === null) {
-    return res.status(400).send({ validationErrors: { email: "email can't be null" } });
-  }
-  next();
 };

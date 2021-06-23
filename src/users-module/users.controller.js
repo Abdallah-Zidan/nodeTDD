@@ -1,13 +1,10 @@
 const bcrypt = require('bcrypt');
 const User = require('./user.model');
-const { validationResult } = require('express-validator');
+const { registrationErrors } = require('./validations');
 module.exports.storeUser = async (req, res) => {
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    errors.array.forEach(err=>{
-      
-    })
-    return res.status(400).send(errors);
+  const validationErrors = registrationErrors(req);
+  if (validationErrors) {
+    return res.status(400).send({ validationErrors });
   }
   const password = await bcrypt.hash(req.body.password, 10);
   const user = {
